@@ -1,0 +1,20 @@
+<td><%= product.category %></td>
+                        <td><%= product.subcategory %></td>
+                        <td><%= link_to 'Show', product %></td>
+                        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+                        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+         <div class="large-9 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Vitamins</a></li>
+            <li><a href="#">Analgesics</a></li>
+            <li><a href="#">Health</a></li>
+            <li><a href="#">Cosmetics</a></li>
+          </ul>
+        </div>
+
+        <h1><%= image_tag("perfume1.jpg")%></h1>
+
+        <%= link_to 'New Product', new_product_path %>
+        <p id="notice"><%= notice %></p>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+
+      <div class="row">
+      <div class="large-3 columns">
+
+
+          <ul data-orbit
+              data-options="animation:slide;
+                            pause_on_hover:true;
+                            animation_speed:1000;
+                            navigation_arrows:false;
+                            bullets:false;
+                            speed: 500;">
+           
+            <li class="active" width: 1000>
+              <%= image_tag("perfume1.jpg")%>
+              <div class="orbit-caption">
+                Perfume.
+              </div>
+            </li>
+            <li class="active" width: 1000>
+              <%= image_tag("Cologne1.jpg")%>
+              <div class="orbit-caption">
+                Cologne.
+              </div>
+            </li>
+            <li class="active" width: 1000>
+              <%= image_tag("cologne5.jpg")%>
+              <div class="orbit-caption">
+                Three.
+              </div>
+            </li>
+          </ul>
+       </div> 
+          
+        
+        
+      <div class="row">    
+        <div class="large-9 push-3 columns">
+          <%= @myimage1 %>
+
+
+            <table>
+
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Product Image</th>
+                    <th>Price</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                      
+                      <%= myimage2 = '' %>
+
+                    <% @products.each do |product| %>
+                      <% myimage2 = product.image_url %>
+                      <tr>
+                        <td><%= product.title %></td>
+                        <td><%= product.description %></td>
+                        <td><%= image_tag (myimage2), :size => '100x100'  %></td>
+                        <td><%= product.price %></td>
+
+                        <td><a href="/cart/<%= product.id %>" class="button round tiny radius" > Add to Cart</a></td>
+                      </tr>
+                    <% end %>
+          </div>
+    
+          </tbody>
+          </table>
+
+          <br>
+        </div>
+        <div class="large-3 pull-9 columns">
+            
+          <ul class="side-nav">
+            <li> <%= link_to "All Products", products_path %> </li>
+            <li> <%= link_to "Beauty", products_path(:category=>"Beauty Products") %> </li>
+            <li> <%= link_to "Perfumes", products_path(:category=>"perfumes") %> </li>
+            <li> <%= link_to "Eye Care Products", products_path(:category=>"Eye Care Products") %> </li>
+            <li> <%= link_to "Diabetes Care", products_path(:category=>"Diabetes Care") %> </li>
+            <li> <%= link_to "Analgesics", products_path(:category=>"Analgesics") %> </li>
+            <li> <%= link_to "Personel Care", products_path(:category=>"Personel Care") %> </li>
+
+          </ul>
+          
+          <p><%= image_tag("Glucose meters.jpg")%></p>
+            
+        </div>
+        
+        </div>
+        <%= link_to 'New Product', new_product_path %>
+        
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Copyright no one at all. Go to town.</p>
+            </div>
+            <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><a href="#">Prescriptions</a></li>
+                <li><a href="#">vitamins</a></li>
+                <li><a href="#">Cosmetics</a></li>
+                <li><a href="#">Personel Care</a></li>
+              </ul>
+            </div>
+          </div>
+        </div> 
+      </footer>
+   
+</body>
+</html>
+                
+        
