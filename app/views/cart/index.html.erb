@@ -11,6 +11,8 @@
 	<ul>
 	<% total = 0 %>
 	<% myimage = '' %>
+	<div class="row">
+		<div class="large-12 columns">
 		<% @cart.each do | id, quantity | %>
 			<% product = Product.find_by_id(id) %>
 			<li>
@@ -25,10 +27,14 @@
 			<p><%= product.category %></p>
 			
 			<% end %>
+			
 			</li>
+			</div>
 			<p><% total += quantity * product.price %></p>
 			
 		<% end %>
+		
+		</div>
 		<p><b><%= number_to_currency(total, :unit => '$')%></b></p>
 
 	</ul>	

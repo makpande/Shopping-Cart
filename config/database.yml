@@ -9,24 +9,56 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
-  username: root
-  password: Maladhi10$
-  socket: /var/run/mysqld/mysqld.sock
+# default: &default
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: 5
+#   username: root
+#   password: Maladhi10$
+#   socket: /var/run/mysqld/mysqld.sock
+
+# development:
+#   <<: *default
+#   database: cartapp_development
 
 development:
-  <<: *default
-  database: cartapp_development
+  adapter: postgresql
+  encoding: unicode
+  database: katz_development
+  pool: 5
+  username: postgres
+  password: Pharmacy10
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: katz_test
+  pool: 5
+  username: postgres
+  password: Pharmacy10
+  host: localhost
+
+
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   host: localhost
+#   pool: 5
+#   username: postgres
+#   password: Pharmacy10
+#   # # socket: /var/run/mysqld/mysqld.sock
+
+# development:
+#   <<: *default
+#   database: katzapp_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: cartapp_test
+# test:
+#   <<: *default
+#   database: katzapp_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -47,8 +79,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: cartapp_production
-  username: cartapp
-  password: <%= ENV['CARTAPP_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: katzapp_production
+#   username: postgres
+#   password: <%= ENV['CARTAPP_DATABASE_PASSWORD'] %>
