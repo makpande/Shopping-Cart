@@ -8,37 +8,36 @@
 		<%= link_to 'Empty Your Cart', cart_clear_path %> 
 		<% end %>
 		<br><br><br>
-	<ul>
+	
+<div id="cart product">
+	<div class="large-8 columns">
+
 	<% total = 0 %>
-	<% myimage = '' %>
-	<div class="row">
-		<div class="large-12 columns">
+	
+	
 		<% @cart.each do | id, quantity | %>
 			<% product = Product.find_by_id(id) %>
-			<li>
+			
 			<% if product.present? %>
-
-			<%= link_to product.title, product %>
-			<p><%= product.description %></p>
-			<p><%= image_tag(product.image_url) %></p>
+				
+				<%= link_to product.title, product %>
+				<p><%= product.description %></p>
+				<p><%= image_tag(product.image_url) %></p>
 			
-			<p><%= number_to_currency(product.price, :unit => '$') %></p>
-			<p>Quantity: <%= quantity %></p>
-			<p><%= product.category %></p>
-			
+				<p><%= number_to_currency(product.price, :unit => '$') %></p>
+				<p>Quantity: <%= quantity %></p>
+				
+				<p><% total += quantity * product.price %></p>	
+					
 			<% end %>
 			
-			</li>
-			</div>
-			<p><% total += quantity * product.price %></p>
-			
 		<% end %>
-		
-		</div>
-		<p><b><%= number_to_currency(total, :unit => '$')%></b></p>
+	
+		<p><b><%= number_to_currency(Grand total, :unit => '$')%></b></p>
 
-	</ul>	
-			
+		</div>
+	</div>
+		
 	
 		
 			

@@ -69,14 +69,12 @@
 
                 <tbody>
                       
-                      <%= myimage2 = '' %>
-
                     <% @products.each do |product| %>
-                      <% myimage2 = product.image_url %>
+                      
                       <tr>
                         <td><%= product.title %></td>
                         <td><%= product.description %></td>
-                        <td><%= image_tag (myimage2), :size => '100x100'  %></td>
+                        <td><%= image_tag (product.image_url), :size => '100x100'  %></td>
                         <td><%= product.price %></td>
 
                         <td><a href="/cart/<%= product.id %>" class="button round tiny radius" > Add to Cart</a></td>
